@@ -107,10 +107,20 @@ staging:<pre>sudo apt-get install --install-recommends winehq-staging
 <pre>echo "deb http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list</pre>
 <pre>wget -q http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/Release.key -O- | sudo apt-key add -</pre>
 </div>
-<div class="container" >
-    <center><h5 id="important">Instalando dependencias!</h5></center>
-  <h5>Para as dependencias do launcher da Battle.net siga esse <a href="https://github.com/lutris/lutris/wiki/Game:-Blizzard-App">guia!</a>!</h5>
-Sem ele não vai ser possivel instalar o launcher e sem ele não tem como instlar o Starcraft II.
+<div class="container" id="important">
+    <center><h5>Instalando dependencias!</h5></center>
+    <center>Sem elas não é possivel rodar o app da Battle.net</center>
+</div>
+<div class="container">
+
+
+    <p>Para instalar fontes necessarias:</p>
+    <pre>sudo apt install ttf-mscorefonts-installer</pre>
+    <p>Dependencias nescessarias para o acesso online da Battle.net</p>
+    <pre>sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386</pre>
+    <p>As vezes essas dependencias já vem instaladas mas caso não venham é melhor instalar</p>
+    <pre>sudo apt install libsqlite3-0:i386</pre>
+    <p>Caso ocorram algum erro cheque esse <a href="https://github.com/lutris/lutris/wiki/Game:-Blizzard-App">guia.</a> </p>
 </div>
 <div class="container" id="install">
   <center><h5>Instalar via Lutris!</h5></center>
