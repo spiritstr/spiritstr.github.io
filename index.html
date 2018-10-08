@@ -7,16 +7,122 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
 
-    <title>Hello, world!</title>
+    <title>Starcraft 2 on Ubuntu</title>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" id="banner">
     <div class="container">
       <h1 class="display-4">Starcraft II - Ubuntu 18.04</h1>
-      <p class="lead">Thats my personal guide for getting a better perfomance.</p>
+      <p class="lead">Como instalar Starcraft 2 no Ubuntu.</p>
     </div>
   </div>
+
+    <ul>
+      Menu:
+    <li><a href="#Main">Update</li>
+      <li><a href="#amd">AMD</li>
+    <li><a href="#nvidia">Nvidia</li>
+      <ul>
+        <li><a href="#gui">GUI</li>
+        <li><a href="#terminal">Terminal</li>
+      </ul>
+    <li><a href="#wine">Wine</a></li>
+    <li><a href="#lutris">Lutris</a></li>
+    <li><a href="#important">Dependencies</a></li>
+    </ul>
+<div class="container" id="Main">
+  <div class="container">
+    O que vamos fazer: Fazer update da distro, instalar os drivers de video, instalar as dependencias para o jogo.
+  </div>
+  <br>
+  Primeiro vamos fazer o update do sistema:
+  <pre>
+  sudo apt update
+</pre>
+<p id="vulkan">Isso não vai ser realmente nescessario para o Starcraft 2 já que ele roda com DX9, mas pode ser util se você instalar o Battle.net com DX11 e rodar com DXVK, isso vai instalar o suporte para Vulkan.</p>
+<pre>sudo apt install libvulkan1 libvulkan-dev vulkan-utils</pre>
+<p id="amd">Se você estiver usando AMD instalte os drivers Mesa primeiro.</p>
+<pre>sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update
+sudo apt upgrade
+sudo apt install mesa-vulkan-drivers
+</pre>
+<p id="nvidia">Se estiver usando Nvidia instale os drivers.</p>
+<pre>
+  sudo add-apt-repository ppa:graphics-drivers/ppa
+  sudo apt update
+  sudo apt upgrade
+</pre>
+<div class="container" id="gui">
+  <center><h5>Instalando os drivers</h5></center>
+  <center>A duas maneiras de instalar, via GUI ou terminal.</center>
+</div>
+<div>
+<h5>GUI</h5></br>
+ Você só precisa abrir a Configuração do Sistema,então Programas e Atualizações, Drivers Adicionais e clicar em aplicar, isso pode levar alguns minutos então espere.</br>
+<img src="img/1.png" alt="">
+</div>
+<hr>
+<div class="">
+<h5 id="terminal">Terminal</h5></br>
+Para instalar via terminal você precisa rodar o seguinte comando, para descobrir qual driver está disponivel.
+<pre>ubuntu-drivers devices</pre>
+Ele vai retornar linhas simulares a essas com os drivers recomendados:
+<pre>vendor   : NVIDIA Corporation
+model    : GP104 [GeForce GTX 1070]
+driver   : nvidia-driver-390 - third-party free
+driver   : nvidia-driver-396 - third-party free recommended
+driver   : xserver-xorg-video-nouveau - distro free builtin
+</pre>
+Rodar a seguinte linha vai instalar automaticamente o ultimo driver.
+<pre>sudo ubuntu-drivers autoinstall</pre>
+Você também pode instalar um driver em particular como o exemplo:
+<pre>sudo apt install nvidia-396</pre>
+</div>
+<div class="container" id="wine">
+  <center><h5>Instalando o Wine</h5></center>
+  <center>A duas maneiras de fazer isso, via GUI e via Terminal.</center>
+</div>
+
+
+  Para sistemas 64bit é preciso habilitar a aquitetura de 32bit.
+  <pre>sudo dpkg --add-architecture i386</pre>
+
+  <pre>wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/</pre>
+<p>Now we should install Wine, i recommend staging over the stable branch.</p>
+Stable:<pre>sudo apt-get install --install-recommends winehq-stable
+</pre>
+staging:<pre>sudo apt-get install --install-recommends winehq-staging
+</pre>
+</div>
+<div class="container" >
+  <center><h5 id="lutris">Instalando Lutris</h5></center>
+  Rode as seguintes linhas uma por uma.
+
+<pre>ver=$(lsb_release -sr); if [ $ver != "18.04" -a $ver != "16.04" ]; then ver=18.04; fi</pre>
+<pre>echo "deb http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list</pre>
+<pre>wget -q http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/Release.key -O- | sudo apt-key add -</pre>
+</div>
+<div class="container" >
+    <center><h5 id="important">Instalando dependencias!</h5></center>
+  <h5>Para as dependencias do launcher da Battle.net siga esse <a href="https://github.com/lutris/lutris/wiki/Game:-Blizzard-App">guia!</a>!</h5>
+Sem ele não vai ser possivel instalar o launcher e sem ele não tem como instlar o Starcraft II.
+</div>
+<div class="container" id="install">
+  <center><h5>Instalar via Lutris!</h5></center>
+  <center>A parte mais facil do guia.</center>
+  <br>
+  Como tudo isso feito nós podemos agora ir para a pagina do <a href="https://lutris.net/games/starcraft-ii/"> Starcraft 2 no Lutris</a> e cliar em instalar, a partir disso é apenas clicar em seguinte e esperar o script terminar de instalar, uma vez isso feito nós podemos abrir o lutris e clicar no icone do Starcraft 2, isso vai abrir o app da Battle.net e instalar o Starcraft 2 normalmente.
+</div>
+</div>
+
+<div class="footer">
+
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

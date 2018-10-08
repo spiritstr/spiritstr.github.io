@@ -1,0 +1,50 @@
+body{
+
+}
+#wine{
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#gui{
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#important{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+#lutris{
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#install{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+#banner{
+  background: #606c88;
+  background: -moz-linear-gradient(-45deg, #606c88 0%, #3f4c6b 100%);
+  background: -webkit-linear-gradient(-45deg, #606c88 0%,#3f4c6b 100%);
+  background: linear-gradient(135deg, #606c88 0%,#3f4c6b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=1 );
+}
+.footer{
+  margin-top: 10%;
+}
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    background-color: #dddddd;
+    border-radius: 5px;
+    padding: 1%;
+}
+ul{
+  float: left;
+}
+li{
+  list-style-type: none;
+  padding: 5%;
+}
